@@ -130,19 +130,6 @@ const Welcome = () => {
   });
 
   /* Tab Animations */
-  const active = new Value<number>(0);
-  const transition = withTransition(active, { duration: DURATION });
-
-  const transXlation = withSpringTransition(active, {
-    ...SpringUtils.makeDefaultConfig(),
-    overshootClamping: true,
-    damping: new Animated.Value(100),
-  });
-
-  const translateX = interpolate(transXlation, {
-    inputRange: [0, 1, 2],
-    outputRange: [0, SEGMENT, SEGMENT * 2],
-  });
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -310,7 +297,7 @@ const Welcome = () => {
           const { icon, iconName } = tab;
           return (
             <Animated.View style={{ ...styles.tab }} key={index}>
-              <Tab onPress={() => {}} {...{ iconName, transition, index }}>
+              <Tab onPress={() => {}} {...{ iconName, index }}>
                 {icon}
               </Tab>
             </Animated.View>
